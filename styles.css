@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.spinner {
+    font-size: 24px;
+    margin: 20px 0;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #333;
+    min-width: 200px;
+    border: 2px dashed #999;
+    border-radius: 8px;
+    animation: spinText 0.2s linear infinite;
+}
+
+@keyframes spinText {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#winnerDisplay {
+    margin-top: 30px;
+    font-size: 26px;
+    color: green;
+}
