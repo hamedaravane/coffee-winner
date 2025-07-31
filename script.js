@@ -33,8 +33,41 @@ spinButton.addEventListener('click', () => {
       winnerDisplay.textContent = `Winner: ${finalWinner}`;
       setTimeout(() => {
         winnerDisplay.classList.add('revealed');
+        fireConfetti(); // 🎊
       }, 50);
       spinButton.disabled = false;
     }
   }, 100);
 });
+
+function fireConfetti() {
+  const duration = 3 * 1000;
+  const animationEnd = Date.now() + duration;
+  const defaults = {
+    startVelocity: 50,
+    spread: 720,
+    ticks: 100,
+    gravity: 0.5,
+    scalar: 1.4,
+    zIndex: 2000,
+  };
+
+  const interval = setInterval(function () {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      return;
+    }
+
+    const particleCount = 80 * (timeLeft / duration);
+
+    confetti(Object.assign({}, defaults, {
+      particleCount,
+      origin: {
+        x: Math.random() * 0.6 + 0.2,
+        y: Math.random() * 0.3
+      }
+    }));
+  }, 200);
+}
