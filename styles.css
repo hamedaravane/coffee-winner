@@ -4,30 +4,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
     text-align: center;
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 .spinner {
-    font-size: 24px;
-    margin: 20px 0;
+    font-size: 1.2rem;
+    margin: 20px auto;
     height: 50px;
     line-height: 50px;
     font-weight: bold;
     color: #333;
-    min-width: 250px;
+    min-width: 200px;
     border: 2px dashed #999;
     border-radius: 8px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     animation: pulse 0.5s ease-in-out infinite;
+    box-sizing: border-box;
 }
 
 @keyframes pulse {
@@ -39,11 +45,15 @@ body {
 button {
     background-color: #007BFF;
     color: white;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: block;
 }
 
 button:hover {
@@ -56,13 +66,14 @@ textarea {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: 14px;
+    font-size: 1rem;
     resize: vertical;
+    box-sizing: border-box;
 }
 
 #winnerDisplay {
     margin-top: 30px;
-    font-size: 28px;
+    font-size: 1.75rem;
     color: green;
     opacity: 0;
     transform: scale(0.8);
@@ -72,4 +83,40 @@ textarea {
 #winnerDisplay.revealed {
     opacity: 1;
     transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .spinner {
+        font-size: 1rem;
+        min-width: 180px;
+    }
+
+    #winnerDisplay {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 0.95rem;
+        padding: 10px 16px;
+    }
+
+    .spinner {
+        font-size: 0.95rem;
+        min-width: 150px;
+    }
+
+    textarea {
+        font-size: 0.95rem;
+    }
+
+    #winnerDisplay {
+        font-size: 1.3rem;
+    }
 }
