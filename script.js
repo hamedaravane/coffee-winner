@@ -43,12 +43,16 @@ spinButton.addEventListener('click', () => {
 function fireConfetti() {
   const duration = 3 * 1000;
   const animationEnd = Date.now() + duration;
+
+  // Let's make these defaults more exciting!
   const defaults = {
-    startVelocity: 50,
-    spread: 720,
-    ticks: 100,
-    gravity: 0.5,
-    scalar: 1.4,
+    startVelocity: 40, // Slightly lower initial push for a more "falling" feel
+    spread: 360,       // Full circle spread for a grand explosion
+    ticks: 60,         // Fewer ticks mean particles disappear faster, creating more "bursts"
+    gravity: 0.8,      // Increased gravity makes them fall more realistically
+    scalar: 1.2,       // Smaller scalar for less "zoom," more natural feel
+    decay: 0.92,       // Add some decay for a more organic slowing down
+    origin: { y: 0.7 }, // Start a bit lower on the screen for a "rising from the bottom" effect
     zIndex: 2000,
   };
 
@@ -60,14 +64,20 @@ function fireConfetti() {
       return;
     }
 
-    const particleCount = 80 * (timeLeft / duration);
+    const particleCount = 100 * (timeLeft / duration) + 20;
 
     confetti(Object.assign({}, defaults, {
-      particleCount,
-      origin: {
-        x: Math.random() * 0.6 + 0.2,
-        y: Math.random() * 0.3
-      }
+      particleCount: particleCount,
+      origin: { x: Math.random() },
+      colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']
+    }));
+
+    confetti(Object.assign({}, defaults, {
+      particleCount: particleCount / 2,
+      origin: { x: Math.random() },
+      shapes: ['circle'],
+      scalar: 0.9,
+      colors: ['#ffc0cb', '#ffe4e1', '#b0e0e6', '#87ceeb']
     }));
   }, 200);
 }
